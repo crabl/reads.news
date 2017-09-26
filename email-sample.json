@@ -1,0 +1,17 @@
+{
+    "From": "myUser@theirDomain.com",
+    "FromName": "My User",
+    "To": "451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com",
+    "ToFull": [{
+        "Email": "451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com",
+        "Name": "",
+        "MailboxHash": "ahoy"
+    }],
+    "Subject": "This is an inbound message",
+    "MessageID": "22c74902-a0c1-4511-804f2-341342852c90",
+    "Date": "Thu, 5 Apr 2012 16:59:01 +0200",
+    "MailboxHash": "ahoy",
+    "TextBody": "[ASCII]",
+    "HtmlBody": "[HTML]",
+    "StrippedTextReply": "Ok, thanks for letting me know!"
+}
