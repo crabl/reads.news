@@ -4,6 +4,7 @@ const validator = require('validator');
 const path = require('path');
 const bodyParser = require('body-parser');
 const getUrls = require('get-urls');
+var read = require('node-readability');
 
 const app = express();
 
@@ -71,7 +72,14 @@ app.get('/_sub/:subdomain/links', function (req, res) {
 });
 
 app.post('/_sub/:subdomain/preview', function (req, res) {
-  return res.send('ayy');
+  read(req.body.url, function(err, article, meta) {
+    if (err) {
+      return res.send('<h1>Error</h1>');
+    }
+    
+    res.send('<h1>' + article.title + '</h1>' + article.content);
+    return article.close();
+  });
 });
 
 app.post('/webhook', function (req, res) {

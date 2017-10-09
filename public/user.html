@@ -7,13 +7,13 @@
     <div id="links-container">
       <ul>
         <li v-for="link in links">
-          {{ link }}
+          <a href="#" v-on:click="getPreview(link)">{{ link }}</a>
         </li>
       </ul>
     </div>
 
     <div id="preview-container">
-      
+      <div v-html="preview"></div>
     </div>
   </body>
 

@@ -13,6 +13,7 @@
     "catch-all": "0.0.1",
     "express": "^4.15.5",
     "get-urls": "^7.0.0",
+    "node-readability": "^3.0.0",
     "validator": "^8.2.0",
     "wildcard-subdomains": "^1.1.0"
   }
