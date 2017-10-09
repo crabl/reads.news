@@ -2,8 +2,12 @@ const express = require('express');
 const wildcardSubdomains = require('wildcard-subdomains');
 const validator = require('validator');
 const path = require('path');
+const bodyParser = require('body-parser');
+const getUrls = require('get-urls');
 
 const app = express();
+
+app.use(bodyParser.json());
 
 app.use(wildcardSubdomains({
   whitelist: ['www', 'app', 'api'],
@@ -63,7 +67,14 @@ app.get('/_sub/:subdomain/links', function (req, res) {
 });
 
 app.post('/webhook', function (req, res) {
+  const { To, From, FromName, TextBody } = req.body;
 
+  const user = To.replace('@reads.news', '');
+  const urls = Array.from(getUrls(TextBody));
+
+  db[user] = [...db[user], ...urls];
+
+  res.send('OK');
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);

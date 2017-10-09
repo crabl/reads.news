@@ -9,8 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "catch-all": "0.0.1",
     "express": "^4.15.5",
+    "get-urls": "^7.0.0",
     "validator": "^8.2.0",
     "wildcard-subdomains": "^1.1.0"
   }
