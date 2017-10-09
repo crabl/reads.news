@@ -4,8 +4,20 @@
   </head>
 
   <body>
-    Yo, what's up?
+    <div id="links-container">
+      <ul>
+        <li v-for="link in links">
+          {{ link }}
+        </li>
+      </ul>
+    </div>
+
+    <div id="preview-container">
+      
+    </div>
   </body>
 
-  
+  <script src="//unpkg.com/vue"></script>
+  <script src="//code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="reader.js"></script>
 </html>

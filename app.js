@@ -28,6 +28,10 @@ const db = {
   ]
 }
 
+app.get('/_sub/:subdomain/reader.js', function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/reader.js'));
+});
+
 app.get('/_sub/:subdomain/', function (req, res) {
   const raw_subdomain = req.params.subdomain;
 
@@ -64,6 +68,10 @@ app.get('/_sub/:subdomain/links', function (req, res) {
   }
 
   return res.json([]);
+});
+
+app.post('/_sub/:subdomain/preview', function (req, res) {
+  return res.send('ayy');
 });
 
 app.post('/webhook', function (req, res) {
