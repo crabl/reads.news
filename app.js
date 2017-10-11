@@ -4,6 +4,7 @@ const validator = require('validator');
 const path = require('path');
 const bodyParser = require('body-parser');
 const getUrls = require('get-urls');
+var read = require('node-readability');
 
 const app = express();
 
@@ -27,6 +28,10 @@ const db = {
     'http://www.cbc.ca/beta/news/canada/calgary/amazon-todd-hirsch-arts-culture-imperative-calgary-1.4304875'
   ]
 }
+
+app.get('/_sub/:subdomain/reader.js', function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/reader.js'));
+});
 
 app.get('/_sub/:subdomain/', function (req, res) {
   const raw_subdomain = req.params.subdomain;
@@ -64,6 +69,17 @@ app.get('/_sub/:subdomain/links', function (req, res) {
   }
 
   return res.json([]);
+});
+
+app.post('/_sub/:subdomain/preview', function (req, res) {
+  read(req.body.url, function(err, article, meta) {
+    if (err) {
+      return res.send('<h1>Error</h1>');
+    }
+    
+    res.send('<h1>' + article.title + '</h1>' + article.content);
+    return article.close();
+  });
 });
 
 app.post('/webhook', function (req, res) {
